@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "kpi",
     'drf_yasg',
+    'graphene_django',
+
 ]
 
 MIDDLEWARE = [
@@ -120,6 +122,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "static/"
+
+GRAPHENE = {
+    'SCHEMA': 'kpi.schema.schema'
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

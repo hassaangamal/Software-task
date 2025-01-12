@@ -14,6 +14,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from graphene_django.views import GraphQLView
+from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib import admin
 from django.urls import path, include
@@ -39,4 +41,6 @@ urlpatterns = [
     path('api/', include('kpi.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True))),
+
 ]
